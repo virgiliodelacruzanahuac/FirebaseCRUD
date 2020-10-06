@@ -27,7 +27,7 @@ class UserDetailScreen extends Component {
           isLoading: false
         });
       } else {
-        console.log("Document does not exist!");
+        console.log("Documento no existe!");
       }
     });
   }
@@ -68,18 +68,18 @@ class UserDetailScreen extends Component {
   deleteUser() {
     const dbRef = firebase.firestore().collection('users').doc(this.props.route.params.userkey)
       dbRef.delete().then((res) => {
-          console.log('Item removed from database')
+          console.log('Item eliminado de la base de datos')
           this.props.navigation.navigate('UserScreen');
       })
   }
 
   openTwoButtonAlert=()=>{
     Alert.alert(
-      'Delete User',
-      'Are you sure?',
+      'Borrar usuario',
+      'Estas seguro?',
       [
         {text: 'Yes', onPress: () => this.deleteUser()},
-        {text: 'No', onPress: () => console.log('No item was removed'), style: 'cancel'},
+        {text: 'No', onPress: () => console.log('No se elimino'), style: 'cancel'},
       ],
       { 
         cancelable: true 
