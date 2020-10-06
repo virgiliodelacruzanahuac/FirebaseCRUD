@@ -106,8 +106,6 @@ class UserDetailScreen extends Component {
         </View>
         <View style={styles.inputGroup}>
           <TextInput
-              multiline={true}
-              numberOfLines={4}
               placeholder={'Email'}
               value={this.state.email}
               onChangeText={(val) => this.inputValueUpdate(val, 'email')}

@@ -61,15 +61,13 @@ class AddUserScreen extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.inputGroup}>
           <TextInput
-              placeholder={'Name'}
+              placeholder={'Nombre'}
               value={this.state.name}
               onChangeText={(val) => this.inputValueUpdate(val, 'name')}
           />
         </View>
         <View style={styles.inputGroup}>
           <TextInput
-              multiline={true}
-              numberOfLines={4}
               placeholder={'Email'}
               value={this.state.email}
               onChangeText={(val) => this.inputValueUpdate(val, 'email')}
