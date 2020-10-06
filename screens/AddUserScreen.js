@@ -77,8 +77,9 @@ class AddUserScreen extends Component {
         </View>
         <View style={styles.inputGroup}>
           <TextInput
-              placeholder={'Mobile'}
+              placeholder={'Celular'}
               value={this.state.mobile}
+              keyboardType='numeric'
               onChangeText={(val) => this.inputValueUpdate(val, 'mobile')}
           />
         </View>
@@ -86,6 +87,14 @@ class AddUserScreen extends Component {
           <Button
             title='Agrega usuario'
             onPress={() => this.storeUser()} 
+            color="#19AC52"
+          />
+        </View>
+
+        <View style={styles.button}>
+          <Button
+            title='Ver usuarios'
+            onPress={() =>  this.props.navigation.navigate('UserScreen')} 
             color="#19AC52"
           />
         </View>
@@ -114,6 +123,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  button: {
+    marginBottom: 7, 
   }
 })
 

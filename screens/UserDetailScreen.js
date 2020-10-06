@@ -99,7 +99,7 @@ class UserDetailScreen extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.inputGroup}>
           <TextInput
-              placeholder={'Name'}
+              placeholder={'Nombre'}
               value={this.state.name}
               onChangeText={(val) => this.inputValueUpdate(val, 'name')}
           />
@@ -117,19 +117,20 @@ class UserDetailScreen extends Component {
           <TextInput
               placeholder={'Mobile'}
               value={this.state.mobile}
+              keyboardType='numeric'
               onChangeText={(val) => this.inputValueUpdate(val, 'mobile')}
           />
         </View>
         <View style={styles.button}>
           <Button
-            title='Update'
+            title='Actualizar'
             onPress={() => this.updateUser()} 
             color="#19AC52"
           />
           </View>
          <View>
           <Button
-            title='Delete'
+            title='Borrar'
             onPress={this.openTwoButtonAlert}
             color="#E37399"
           />
