@@ -22,7 +22,7 @@ class AddUserScreen extends Component {
 
   storeUser() {
     if(this.state.name === ''){
-     alert('Fill at least your name!')
+     alert('Te falto tu nombre es obligatorio!')
     } else {
       this.setState({
         isLoading: true,
@@ -41,7 +41,7 @@ class AddUserScreen extends Component {
         this.props.navigation.navigate('UserScreen')
       })
       .catch((err) => {
-        console.error("Error found: ", err);
+        console.error("Error: ", err);
         this.setState({
           isLoading: false,
         });
@@ -84,7 +84,7 @@ class AddUserScreen extends Component {
         </View>
         <View style={styles.button}>
           <Button
-            title='Add User'
+            title='Agrega usuario'
             onPress={() => this.storeUser()} 
             color="#19AC52"
           />
