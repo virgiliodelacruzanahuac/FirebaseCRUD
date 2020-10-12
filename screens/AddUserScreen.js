@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
+import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View,Text } from 'react-native';
 import firebase from '../database/firebaseDb';
 
 class AddUserScreen extends Component {
   constructor() {
     super();
     this.dbRef = firebase.firestore().collection('users');
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    
+    
     this.state = {
       name: '',
       email: '',
       mobile: '',
+      fechahora: date + '/' + month + '/' + year 
+      + ' ' + hours + ':' + min + ':' + sec,
       isLoading: false
     };
   }
@@ -31,12 +41,14 @@ class AddUserScreen extends Component {
         name: this.state.name,
         email: this.state.email,
         mobile: this.state.mobile,
+        fechahora : this.state.fechahora,
       }).then((res) => {
         this.setState({
           name: '',
           email: '',
           mobile: '',
           isLoading: false,
+          fechahora : '',
         });
         this.props.navigation.navigate('UserScreen')
       })
@@ -59,6 +71,11 @@ class AddUserScreen extends Component {
     }
     return (
       <ScrollView style={styles.container}>
+        <View>
+          <Text>
+            Ejemplo CRUD Firebase
+          </Text>
+        </View>
         <View style={styles.inputGroup}>
           <TextInput
               placeholder={'Nombre'}

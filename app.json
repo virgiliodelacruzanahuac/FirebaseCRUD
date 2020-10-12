@@ -1,9 +1,8 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "reactNativeCrudFiresote",
+    "name": "FirebaseCRUD",
+    "slug": "reactNativeCrudFirebase",
     "privacy": "public",
-    "sdkVersion": "38.0.0",
     "platforms": [
       "ios",
       "android",

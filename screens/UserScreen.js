@@ -27,13 +27,14 @@ class UserScreen extends Component {
   getCollection = (querySnapshot) => {
     const userArr = [];
     querySnapshot.forEach((res) => {
-      const { name, email, mobile } = res.data();
+      const { name, email, mobile,fechahora } = res.data();
       userArr.push({
         key: res.id,
         res,
         name,
         email,
         mobile,
+        fechahora,
       });
     });
     this.setState({

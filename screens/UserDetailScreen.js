@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
+import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View,Text } from 'react-native';
 import firebase from '../database/firebaseDb';
 
 class UserDetailScreen extends Component {
@@ -10,6 +10,7 @@ class UserDetailScreen extends Component {
       name: '',
       email: '',
       mobile: '',
+      fechahora:'',
       isLoading: true
     };
   }
@@ -24,6 +25,7 @@ class UserDetailScreen extends Component {
           name: user.name,
           email: user.email,
           mobile: user.mobile,
+          fechahora: user.fechahora,
           isLoading: false
         });
       } else {
@@ -42,17 +44,27 @@ class UserDetailScreen extends Component {
     this.setState({
       isLoading: true,
     });
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    
     const updateDBRef = firebase.firestore().collection('users').doc(this.state.key);
     updateDBRef.set({
       name: this.state.name,
       email: this.state.email,
       mobile: this.state.mobile,
+      fechahora: date + '/' + month + '/' + year 
+      + ' ' + hours + ':' + min + ':' + sec,
     }).then((docRef) => {
       this.setState({
         key: '',
         name: '',
         email: '',
         mobile: '',
+        fechahora:'',
         isLoading: false,
       });
       this.props.navigation.navigate('UserScreen');
@@ -119,6 +131,9 @@ class UserDetailScreen extends Component {
               onChangeText={(val) => this.inputValueUpdate(val, 'mobile')}
           />
         </View>
+       <View>
+    <Text>Fecha Registro/Actualización {this.state.fechahora}</Text>
+       </View>
         <View style={styles.button}>
           <Button
             title='Actualizar'
